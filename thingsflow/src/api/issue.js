@@ -15,8 +15,8 @@ export const getIssues = async ({ queryKey }) => {
       url: issue.url,
       title: issue.title,
       issueNumber: issue.number,
-      user: issue.user,
-      data: issue.created_at,
+      userName: issue.user.login,
+      date: issue.created_at,
       comments: issue.comments,
     };
   });
