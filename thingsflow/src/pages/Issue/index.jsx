@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import styled from "styled-components";
 import { getIssue } from "../../api/issue";
 import IssueShort from "../../components/IssueShort";
+import { addNewLine } from "../../util/addNewLine";
 
 const Head = styled.div`
   display: flex;
@@ -48,7 +49,9 @@ const Issue = () => {
               comments={issue.comments}
             />
           </Head>
-          <Content>{issue.body}</Content>
+          <Content
+            dangerouslySetInnerHTML={{ __html: addNewLine(issue.body) }}
+          ></Content>
         </>
       )}
       {!isLoading && "로딩컴포넌트"}
