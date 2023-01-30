@@ -1,8 +1,7 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import BasicLayout from "../components/BasicLayout";
 import Issue from "../pages/Issue";
 import Main from "../pages/Main";
-
-const { BrowserRouter, Routes, Route } = require("react-router-dom");
 
 const Router = () => {
   return (
