@@ -48,7 +48,16 @@ const Main = () => {
     <Wrapper>
       {issueList &&
         issueList.map((issue, idx) => {
-          return <IssueShort key={issue.id} {...issue} />;
+          if (idx === 4)
+            return (
+              <>
+                <a href="https://thingsflow.com/ko/home">
+                  <img src="https://placehold.it/500x100?text=ad" alt="ad" />
+                </a>
+                <IssueShort key={issue.id} {...issue} />
+              </>
+            );
+          else return <IssueShort key={issue.id} {...issue} />;
         })}
       {isEnd && "로딩컴포넌트"}
     </Wrapper>
