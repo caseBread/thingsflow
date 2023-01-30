@@ -1,16 +1,12 @@
 import axios from "axios";
 import { ORGAN_NAME, REPO_NAME } from "../util/constants";
 
-export const getIssueList = async ({ queryKey }) => {
-  const [_, page] = queryKey;
-
+export const getIssueList = async (page) => {
   const { data } = await axios.get(
     `https://api.github.com/repos/${ORGAN_NAME}/${REPO_NAME}/issues`,
 
     { params: { page, state: "open", sort: "comments" } }
   );
-
-  console.log(data);
 
   const issueList = data.map((issue, idx) => {
     return {
