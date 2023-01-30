@@ -1,10 +1,25 @@
 import axios from "axios";
 
-export const getIssues = async ({ organName, repoName, page }) => {
+export const getIssues = async ({ queryKey }) => {
+  const [_, organName, repoName, page] = queryKey;
+
   const { data } = await axios.get(
-    `https://api.github.com/issues/${organName}/${repoName}`,
-    { params: { page } }
+    `https://api.github.com/repos/${organName}/${repoName}/issues`,
+
+    { params: { page, state: "open", sort: "comments" } }
   );
 
-  return data;
+  const issueData = data.map((issue, idx) => {
+    return {
+      id: issue.id,
+      url: issue.url,
+      title: issue.title,
+      issueNumber: issue.number,
+      user: issue.user,
+      data: issue.created_at,
+      comments: issue.comments,
+    };
+  });
+
+  return issueData;
 };
