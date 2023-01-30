@@ -1,13 +1,9 @@
 import { useQuery } from "react-query";
-import { getIssues } from "../../api/issue";
+import { getIssueList } from "../../api/issue";
 import IssueShort from "../../components/IssueShort";
-import { ORGAN_NAME, REPO_NAME } from "../../util/constants";
 
 const Main = () => {
-  const { data, isLoading, isSuccess } = useQuery(
-    ["issues", ORGAN_NAME, REPO_NAME, 1],
-    getIssues
-  );
+  const { data, isLoading, isSuccess } = useQuery(["issues", 1], getIssueList);
 
   return (
     <div>

@@ -1,11 +1,17 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  width: 100%;
   padding: 1rem;
   gap: 1rem;
+
+  text-decoration: none;
+  color: black;
 
   border-bottom: 1px solid gray;
 `;
@@ -31,17 +37,9 @@ const Bottom = styled.div`
 const Right = styled.div`
   width: 100px;
 `;
-const IssueShort = ({
-  id,
-  url,
-  title,
-  issueNumber,
-  userName,
-  date,
-  comments,
-}) => {
+const IssueShort = ({ issueNumber, title, userName, date, comments }) => {
   return (
-    <Wrapper>
+    <Wrapper to={`/issue?number=${issueNumber}`}>
       <Left>
         <Top>
           <IssueIndex>#{issueNumber}</IssueIndex>
